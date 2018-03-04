@@ -26,17 +26,27 @@
 	var video = myVideo;
 
 	peer = new Peer({
-		key: 'peerjs', 
-		host:'videochatserver-knvihczvun.now.sh',
-		port:'', 
-		path: '/peerjs' 
+		key: 'peerjs',
+		host: 'videochatserver-knvihczvun.now.sh',
+		port: '',
+		path: '/peerjs'
 	});
-	
+
 	setTimeout(() => {
 		mypeerid = this.peer.id;
 		document.querySelector('.myId').innerHTML = mypeerid;
-	}, 3000);
+		if (!mypeerid) {
+			peer.reconnect()
+			retryGettingId()
+		}
+	}, 6000);
 
+	function retryGettingId() {
+		setTimeout(() => {
+			mypeerid = peer.id;
+			document.querySelector('.myId').innerHTML = mypeerid;
+		}, 3000);
+	}
 
 	peer.on('connection', function(conn) {
 		conn.on('data', function(data) {
