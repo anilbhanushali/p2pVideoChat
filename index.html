@@ -36,10 +36,10 @@
 		mypeerid = this.peer.id;
 		document.querySelector('.myId').innerHTML = mypeerid;
 		if (!mypeerid) {
-			peer.reconnect()
+			peer._retrieveId()
 			retryGettingId()
 		}
-	}, 6000);
+	}, 3000);
 
 	function retryGettingId() {
 		setTimeout(() => {
