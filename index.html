@@ -24,8 +24,8 @@
 	var mypeerid;
 
 	var video = myVideo;
-
-	peer = new Peer({
+	var myId = Date.now().toString().substring(6);
+	peer = new Peer(myId,{
 		key: 'peerjs',
 		host: 'videochatserver-knvihczvun.now.sh',
 		port: '',
