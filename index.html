@@ -24,7 +24,13 @@
 	var mypeerid;
 
 	var video = myVideo;
-	peer = new Peer({key: '5dgy4kqvbbju4n29' });
+	
+	peer = new Peer({
+		key: '5dgy4kqvbbju4n29', 
+		host:'https://videochatserver-wwxbpnddrm.now.sh/', 
+		path: '/peerjs' 
+	});
+	
 	setTimeout(() => {
 		mypeerid = this.peer.id;
 		document.querySelector('.myId').innerHTML = mypeerid;
